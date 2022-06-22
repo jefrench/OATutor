@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const jwtMiddleware = require('express-jwt');
 const level = require('level')
 const { lessonMapping } = require("./legacy-lesson-mapping");
-const { SITE_NAME } = require("../src/config/shared-config");
 const to = require("await-to-js").default;
 const {spawn} = require('child_process');
 var fs = require('fs'); 
@@ -23,7 +22,7 @@ const consumerKeySecretMap = {
     'key': 'secret',
 }
 
-const oatsHost = "https://cahlr.github.io/OATutor/#"
+const oatsHost = "https://cahlr.github.io/OpenITS/#"
 const stagingHost = "https://cahlr.github.io/OATutor-Staging/#"
 const unlinkedPage = "assignment-not-linked"
 const alreadyLinkedPage = "assignment-already-linked"
@@ -333,6 +332,7 @@ app.post('/postScore', jwtMiddleware({
             </p>`
                 )
                 .join("")}
+            test test
             <h4 style="padding-top: 10px"> Problem Stats </h4>
             ${formattedText}
         `;
@@ -397,7 +397,7 @@ app.post('/auth', async (req, res) => {
 
     if (lessonNum == null) {
         console.log(`Lesson does not exist for "${assignment_title}"`);
-        res.send(`Invalid lesson ID. Please contact your teacher or the ${SITE_NAME} development team to fix this error.`);
+        res.send("Invalid lesson ID. Please contact your teacher or the OpenITS development team to fix this error.");
         res.end();
     } else {
         let err, linkedLesson;
@@ -414,13 +414,13 @@ app.post('/auth', async (req, res) => {
 
         const token = getJWT(provider, consumer_secret, consumer_key, privileged)
 
-        res.writeHead(302, { Location: `${host}/lessons/${linkedLesson}?token=${token}` })
+        res.writeHead(302, { Location: `${host}/lessons/${linkedLesson || lessonNum}?token=${token}` })
         res.end();
     }
 });
 
 app.get("/", (req, res) => {
-    res.send(`Please visit ${oatsHost}`).end()
+    res.send("Please visit https://cahlr.github.io/OpenITS").end()
 })
 
 app.listen(port, () => {

@@ -1,12 +1,12 @@
 import React from 'react';
 import courses from './coursePlans.js';
 import { calculateSemester } from "../util/calculateSemester.js";
-
-import { SITE_NAME } from "./shared-config"
 import { cleanObjectKeys } from "../util/cleanObject";
 
 const ThemeContext = React.createContext(0);
-const SITE_VERSION = "1.4.0";
+const SITE_VERSION = "1.3.3";
+
+const SITE_NAME = "Open ITS"
 
 const CURRENT_SEMESTER = calculateSemester(Date.now())
 
@@ -29,13 +29,6 @@ const ENABLE_FIREBASE = true;
  * @type {boolean}
  */
 const DO_LOG_DATA = true;
-
-/**
- * Indicates whether a log event should be fired everytime a user leaves or returns to this window.
- * @type {boolean}
- */
-const DO_FOCUS_TRACKING = true;
-
 /**
  * If DO_LOG_DATA is enabled, indicates whether the site should also track user mouse interactions with the site. See
  * the README.md to properly enable this feature.
@@ -44,7 +37,7 @@ const DO_FOCUS_TRACKING = true;
 const DO_LOG_MOUSE_DATA = false;
 
 /**
- * If reach bottom of provided hints, give correct answer to question
+ * TODO: document the usage of this boolean option
  * @type {boolean}
  */
 const ENABLE_BOTTOM_OUT_HINTS = true;
@@ -74,17 +67,16 @@ const HELP_DOCUMENT = "https://docs.google.com/document/d/e/2PACX-1vToe2F3RiCx1n
 
 const coursePlans = courses.sort((a, b) => a.courseName.localeCompare(b.courseName));
 
+let lessonCounter = 0;
 const lessonPlans = [];
 for (let i = 0; i < coursePlans.length; i++) {
     const course = coursePlans[i];
     for (let j = 0; j < course.lessons.length; j++) {
+        course.lessons[j].lessonNum = lessonCounter;
+        lessonCounter += 1;
         course.lessons[j].learningObjectives = cleanObjectKeys(course.lessons[j].learningObjectives)
         lessonPlans.push({ ...course.lessons[j], courseName: course.courseName });
     }
-}
-
-const findLessonById = (ID) => {
-    return lessonPlans.find(lessonPlan => lessonPlan.id === ID)
 }
 
 export {
@@ -108,7 +100,5 @@ export {
     HELP_DOCUMENT,
     SHOW_COPYRIGHT,
     CURRENT_SEMESTER,
-    CANVAS_WARNING_STORAGE_KEY,
-    DO_FOCUS_TRACKING,
-    findLessonById
+    CANVAS_WARNING_STORAGE_KEY
 };

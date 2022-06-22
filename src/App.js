@@ -18,12 +18,18 @@ import {
     PROGRESS_STORAGE_KEY,
     SITE_VERSION,
     USER_ID_STORAGE_KEY,
-    DO_FOCUS_TRACKING,
 } from './config/config.js';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+// ### BEGIN CUSTOMIZABLE IMPORTS ###
+import config from './config/firebaseConfig.js';
+import skillModel from './config/skillModel.js';
+import { bktParams as bktParams1 } from './config/bktParams/bktParams1.js';
+import { bktParams as bktParams2 } from './config/bktParams/bktParams2.js';
+import { heuristic as lowestHeuristic } from './config/problemSelectHeuristics/problemSelectHeuristic1.js';
+import { heuristic as highestHeuristic } from './config/problemSelectHeuristics/problemSelectHeuristic2.js';
 import parseJwt from "./util/parseJWT";
 import AssignmentNotLinked from "./pages/AssignmentNotLinked";
 import AssignmentAlreadyLinked from "./pages/AssignmentAlreadyLinked";
@@ -33,16 +39,6 @@ import loadFirebaseEnvConfig from "./util/loadFirebaseEnvConfig";
 import generateRandomInt from "./util/generateRandomInt";
 import { cleanObjectKeys } from "./util/cleanObject";
 import GlobalErrorBoundary from "./Components/_General/GlobalErrorBoundary";
-import { IS_STAGING_OR_DEVELOPMENT } from "./util/getBuildType";
-import TabFocusTrackerWrapper from "./Components/_General/TabFocusTrackerWrapper";
-
-// ### BEGIN CUSTOMIZABLE IMPORTS ###
-import config from './config/firebaseConfig.js';
-import skillModel from './config/skillModel.js';
-import { bktParams as bktParams1 } from './config/bktParams/bktParams1.js';
-import { bktParams as bktParams2 } from './config/bktParams/bktParams2.js';
-import { heuristic as lowestHeuristic } from './config/problemSelectHeuristics/problemSelectHeuristic1.js';
-import { heuristic as highestHeuristic } from './config/problemSelectHeuristics/problemSelectHeuristic2.js';
 // ### END CUSTOMIZABLE IMPORTS ###
 
 loadFirebaseEnvConfig(config)
@@ -54,10 +50,7 @@ const queryParamToContext = {
     "token": "jwt",
     "lis_person_name_full": "studentName",
     "to": "alreadyLinkedLesson",
-    "use_expanded_view": "use_expanded_view"
 }
-
-const queryParamsToKeep = ["use_expanded_view", "to"]
 
 const treatmentMapping = {
     bktParams: {
@@ -92,7 +85,7 @@ class App extends React.Component {
             additionalContext: {},
         }
 
-        if (IS_STAGING_OR_DEVELOPMENT) {
+        if (process.env.REACT_APP_BUILD_TYPE === "staging" || process.env.REACT_APP_BUILD_TYPE === "development") {
             document["oats-meta-site-hash"] = process.env.REACT_APP_COMMIT_HASH
         }
 
@@ -119,16 +112,6 @@ class App extends React.Component {
             // Firebase creation
             this.firebase = new Firebase(this.userID, config, this.getTreatment(), SITE_VERSION, additionalContext.user);
 
-            let targetLocation = window.location.href.split("?")[0]
-
-            const keptQueryParamsObj = Object
-                .fromEntries(Object.entries(additionalContext).filter(([key, _]) => queryParamsToKeep.includes(key)))
-            const keptQueryParams = new URLSearchParams(keptQueryParamsObj)
-
-            if (Object.keys(keptQueryParamsObj).length > 0) {
-                targetLocation += `?${keptQueryParams.toString()}`
-            }
-
             if (this.mounted) {
                 this.setState((prev) => ({
                     additionalContext: {
@@ -136,13 +119,13 @@ class App extends React.Component {
                         ...additionalContext
                     }
                 }))
-                window.history.replaceState({}, document.title, targetLocation)
+                window.history.replaceState({}, document.title, window.location.href.split("?")[0])
             } else if (this.mounted === undefined) {
                 this.state = {
                     ...this.state,
                     additionalContext
                 }
-                window.history.replaceState({}, document.title, targetLocation)
+                window.history.replaceState({}, document.title, window.location.href.split("?")[0])
             }
         }
         window.addEventListener('popstate', onLocationChange);
@@ -237,26 +220,26 @@ class App extends React.Component {
                                 <Switch>
                                     <Route exact path="/" render={(props) => (
                                         <Platform key={Date.now()} saveProgress={() => this.saveProgress()}
-                                            loadProgress={this.loadProgress}
-                                            removeProgress={this.removeProgress} {...props} />
+                                                  loadProgress={this.loadProgress}
+                                                  removeProgress={this.removeProgress} {...props} />
                                     )}/>
                                     <Route path="/courses/:courseNum" render={(props) => (
                                         <Platform key={Date.now()} saveProgress={() => this.saveProgress()}
-                                            loadProgress={this.loadProgress}
-                                            removeProgress={this.removeProgress}
-                                            courseNum={props.match.params.courseNum} {...props} />
+                                                  loadProgress={this.loadProgress}
+                                                  removeProgress={this.removeProgress}
+                                                  courseNum={props.match.params.courseNum} {...props} />
                                     )}/>
-                                    <Route path="/lessons/:lessonID" render={(props) => (
+                                    <Route path="/lessons/:lessonNum" render={(props) => (
                                         <Platform key={Date.now()} saveProgress={() => this.saveProgress()}
-                                            loadProgress={this.loadProgress}
-                                            removeProgress={this.removeProgress}
-                                            lessonID={props.match.params.lessonID} {...props} />
+                                                  loadProgress={this.loadProgress}
+                                                  removeProgress={this.removeProgress}
+                                                  lessonNum={props.match.params.lessonNum} {...props} />
                                     )}/>
                                     <Route path="/debug/:problemID" render={(props) => (
                                         <DebugPlatform key={Date.now()} saveProgress={() => this.saveProgress()}
-                                            loadProgress={this.loadProgress}
-                                            removeProgress={this.removeProgress}
-                                            problemID={props.match.params.problemID} {...props} />
+                                                       loadProgress={this.loadProgress}
+                                                       removeProgress={this.removeProgress}
+                                                       problemID={props.match.params.problemID} {...props} />
                                     )}/>
                                     <Route path="/posts" render={(props) => (
                                         <Posts key={Date.now()} {...props} />
@@ -273,9 +256,6 @@ class App extends React.Component {
                                     <Route component={Notfound}/>
                                 </Switch>
                             </div>
-                            {
-                                DO_FOCUS_TRACKING && <TabFocusTrackerWrapper/>
-                            }
                         </Router>
                         <ToastContainer
                             autoClose={false}
