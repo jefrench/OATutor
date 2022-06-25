@@ -11,7 +11,7 @@ import { checkAnswer } from '../ProblemLogic/checkAnswer.js';
 import styles from './commonStyles.js';
 import { withStyles } from '@material-ui/core/styles';
 import HintSystem from './HintSystem.js';
-import { chooseVariables, renderText } from '../ProblemLogic/renderText.js';
+import { renderText, chooseVariables } from '../ProblemLogic/renderText.js';
 import { ENABLE_BOTTOM_OUT_HINTS, ThemeContext } from '../config/config.js';
 
 import "./ProblemCard.css";
@@ -43,7 +43,7 @@ class ProblemCard extends React.Component {
         }
 
         // Bottom out hints option
-        if (ENABLE_BOTTOM_OUT_HINTS && context.debug && !context["use_expanded_view"]) {
+        if (ENABLE_BOTTOM_OUT_HINTS && !context["use_expanded_view"]) {
             // Bottom out hints
             this.hints.push({
                 id: this.step.id + "-h" + (this.hints.length),
@@ -72,8 +72,8 @@ class ProblemCard extends React.Component {
 
         this.state = {
             inputVal: "",
-            isCorrect: context.use_expanded_view && context.debug ? true : null ,
-            checkMarkOpacity: context.use_expanded_view && context.debug ? '100' : '0',
+            isCorrect: null,
+            checkMarkOpacity: '0',
             showHints: false,
             hintsFinished: new Array(this.hints.length).fill(0),
             equation: '',
@@ -92,24 +92,20 @@ class ProblemCard extends React.Component {
 
     submit = () => {
         console.debug('submitting problem')
-        const { inputVal, hintsFinished } = this.state;
-        const { variabilization, knowledgeComponents, precision, stepAnswer, answerType } = this.step;
-        const { seed, problemVars, problemID, courseName, answerMade, lesson } = this.props;
-
-        const [parsed, correctAnswer] = checkAnswer(inputVal, stepAnswer, answerType, precision, chooseVariables(Object.assign({}, problemVars, variabilization), seed));
+        const [parsed, correctAnswer] = checkAnswer(this.state.inputVal, this.step.stepAnswer, this.step.answerType, this.step.precision, chooseVariables(Object.assign({}, this.props.problemVars, this.step.variabilization), this.props.seed));
 
         this.context.firebase.log(
             parsed,
-            problemID,
+            this.props.problemID,
             this.step,
             null,
             correctAnswer,
-            hintsFinished,
+            this.state.hintsFinished,
             "answerStep",
-            chooseVariables(Object.assign({}, problemVars, variabilization), seed),
-            lesson,
-            courseName
-        )
+            chooseVariables(Object.assign({}, this.props.problemVars, this.step.variabilization), this.props.seed),
+            this.props.lesson,
+            this.props.courseName
+        );
 
         if (correctAnswer) {
             toast.success("Correct Answer!", {
@@ -125,7 +121,7 @@ class ProblemCard extends React.Component {
             isCorrect: correctAnswer,
             checkMarkOpacity: correctAnswer === true ? '100' : '0'
         });
-        answerMade(this.index, knowledgeComponents, correctAnswer);
+        this.props.answerMade(this.index, this.step.knowledgeComponents, correctAnswer);
     }
 
     editInput = (event) => {
@@ -152,34 +148,28 @@ class ProblemCard extends React.Component {
 
     unlockHint = (hintNum, hintType) => {
         // Mark question as wrong if hints are used (on the first time)
-        const { seed, problemVars, problemID, courseName, answerMade, lesson } = this.props;
-        const { isCorrect, hintsFinished } = this.state;
-        const { knowledgeComponents, variabilization } = this.step;
-
-        if (hintsFinished.reduce((a, b) => a + b) === 0 && isCorrect !== true) {
+        if (this.state.hintsFinished.reduce((a, b) => a + b) === 0 && this.state.isCorrect !== true) {
             this.setState({ usedHints: true });
-            answerMade(this.index, knowledgeComponents, false);
+            this.props.answerMade(this.index, this.step.knowledgeComponents, false);
         }
 
         // If the user has not opened a scaffold before, mark it as in-progress.
-        if (hintsFinished[hintNum] !== 1) {
+        if (this.state.hintsFinished[hintNum] !== 1) {
             this.setState(prevState => {
                 prevState.hintsFinished[hintNum] = (hintType !== "scaffold" ? 1 : 0.5);
                 return { hintsFinished: prevState.hintsFinished }
             }, () => {
-                const { firebase } = this.context;
-
-                firebase.log(
+                this.context.firebase.log(
                     null,
-                    problemID,
+                    this.props.problemID,
                     this.step,
                     this.hints[hintNum],
                     null,
-                    hintsFinished,
+                    this.state.hintsFinished,
                     "unlockHint",
-                    chooseVariables(Object.assign({}, problemVars, variabilization), seed),
-                    lesson,
-                    courseName
+                    chooseVariables(Object.assign({}, this.props.problemVars, this.step.variabilization), this.props.seed),
+                    this.props.lesson,
+                    this.props.courseName
                 );
             });
         }
@@ -208,8 +198,6 @@ class ProblemCard extends React.Component {
 
     render() {
         const { classes } = this.props;
-        const { showHints } = this.state;
-        const { debug, use_expanded_view } = this.context;
         return (
             <Card className={classes.card}>
                 <CardContent>
@@ -222,7 +210,7 @@ class ProblemCard extends React.Component {
                         {renderText(this.step.stepBody, this.props.problemID, chooseVariables(Object.assign({}, this.props.problemVars, this.step.variabilization), this.props.seed))}
                     </div>
 
-                    {(showHints || (debug && use_expanded_view)) && (
+                    {this.state.showHints && (
                         <div className="Hints">
                             <ErrorBoundary componentName={"HintSystem"} descriptor={"hint"}>
                                 <HintSystem
@@ -279,7 +267,6 @@ class ProblemCard extends React.Component {
                             <center>
                                 <Button className={classes.button} style={{ width: "80%" }} size="small"
                                         onClick={this.submit}
-                                        disabled={(use_expanded_view && debug)}
                                         {...stagingProp({
                                             "data-selenium-target": `submit-button-${this.props.index}`
                                         })}>
