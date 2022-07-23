@@ -1,10 +1,12 @@
 import React from 'react';
 import courses from './coursePlans.js';
 import { calculateSemester } from "../util/calculateSemester.js";
+
 import { SITE_NAME } from "./shared-config"
+import { cleanObjectKeys } from "../util/cleanObject";
 
 const ThemeContext = React.createContext(0);
-const SITE_VERSION = "1.3.2";
+const SITE_VERSION = "1.3.4";
 
 const CURRENT_SEMESTER = calculateSemester(Date.now())
 
@@ -15,10 +17,25 @@ const CURRENT_SEMESTER = calculateSemester(Date.now())
 const SHOW_COPYRIGHT = false;
 
 /**
- * Indicates whether the site should use Firebase to store, process, and analyze general user interactions
+ * Only set to true if firebaseConfig.js is set, and you wish to use Firebase to store events. Events include user
+ * feedback, user interactions, and site logs.
+ * @type {boolean}
+ */
+const ENABLE_FIREBASE = true;
+
+/**
+ * If ENABLE_FIREBASE, indicates whether the site should use Firebase to store, process, and analyze general user
+ * interactions.
  * @type {boolean}
  */
 const DO_LOG_DATA = true;
+
+/**
+ * Indicates whether a log event should be fired everytime a user leaves or returns to this window.
+ * @type {boolean}
+ */
+const DO_FOCUS_TRACKING = true;
+
 /**
  * If DO_LOG_DATA is enabled, indicates whether the site should also track user mouse interactions with the site. See
  * the README.md to properly enable this feature.
@@ -57,20 +74,23 @@ const HELP_DOCUMENT = "https://docs.google.com/document/d/e/2PACX-1vToe2F3RiCx1n
 
 const coursePlans = courses.sort((a, b) => a.courseName.localeCompare(b.courseName));
 
-let lessonCounter = 0;
 const lessonPlans = [];
 for (let i = 0; i < coursePlans.length; i++) {
     const course = coursePlans[i];
     for (let j = 0; j < course.lessons.length; j++) {
-        course.lessons[j].lessonNum = lessonCounter;
-        lessonCounter += 1;
+        course.lessons[j].learningObjectives = cleanObjectKeys(course.lessons[j].learningObjectives)
         lessonPlans.push({ ...course.lessons[j], courseName: course.courseName });
     }
+}
+
+const findLessonById = (ID) => {
+    return lessonPlans.find(lessonPlan => lessonPlan.id === ID)
 }
 
 export {
     ThemeContext,
     SITE_VERSION,
+    ENABLE_FIREBASE,
     DO_LOG_DATA,
     DO_LOG_MOUSE_DATA,
     dynamicText,
@@ -88,5 +108,7 @@ export {
     HELP_DOCUMENT,
     SHOW_COPYRIGHT,
     CURRENT_SEMESTER,
-    CANVAS_WARNING_STORAGE_KEY
+    CANVAS_WARNING_STORAGE_KEY,
+    DO_FOCUS_TRACKING,
+    findLessonById
 };
