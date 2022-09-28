@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -66,32 +66,37 @@ class LessonSelection extends React.Component {
                             <Spacer/>
                             <Grid container spacing={3}>
                                 {selectionMode === "course"
-                                    ? this.coursePlans.map((course, i) => {
-                                        return (
-                                            <Grid item xs={12} sm={6} md={4} key={i}>
-                                                <center>
-                                                    <Paper className={classes.paper}>
-                                                        <h2 style={{
-                                                            marginTop: "5px",
-                                                            marginBottom: "10px"
-                                                        }}>{course.courseName}</h2>
-                                                        <IconButton aria-label={`View Course ${i}`}
-                                                                    aria-roledescription={`Navigate to course ${i}'s page to view available lessons`}
-                                                                    role={"link"}
-                                                                    onClick={() => {
-                                                                        this.props.history.push(`/courses/${i}`)
-                                                                        this.props.selectCourse(course)
-                                                                    }}>
-                                                            <img
-                                                                src={`${process.env.PUBLIC_URL}/static/images/icons/folder.png`}
-                                                                width="64px"
-                                                                alt="folderIcon"/>
-                                                        </IconButton>
-                                                    </Paper>
-                                                </center>
-                                            </Grid>
-                                        )
-                                    })
+                                    ? this.coursePlans
+                                        .map((course, i) => {
+                                            const { courseName } = course
+                                            if (courseName.toString().startsWith("!!")) {
+                                                return <Fragment key={ courseName }/>
+                                            }
+                                            return (
+                                                <Grid item xs={12} sm={6} md={4} key={courseName}>
+                                                    <center>
+                                                        <Paper className={classes.paper}>
+                                                            <h2 style={{
+                                                                marginTop: "5px",
+                                                                marginBottom: "10px"
+                                                            }}>{course.courseName}</h2>
+                                                            <IconButton aria-label={`View Course ${i}`}
+                                                                aria-roledescription={`Navigate to course ${i}'s page to view available lessons`}
+                                                                role={"link"}
+                                                                onClick={() => {
+                                                                    this.props.history.push(`/courses/${i}`)
+                                                                    this.props.selectCourse(course)
+                                                                }}>
+                                                                <img
+                                                                    src={`${process.env.PUBLIC_URL}/static/images/icons/folder.png`}
+                                                                    width="64px"
+                                                                    alt="folderIcon"/>
+                                                            </IconButton>
+                                                        </Paper>
+                                                    </center>
+                                                </Grid>
+                                            )
+                                        })
                                     : this.coursePlans[this.props.courseNum].lessons.map((lesson, i) => {
                                         return (
                                             <Grid item xs={12} sm={6} md={4} key={i}>
@@ -105,15 +110,15 @@ class LessonSelection extends React.Component {
                                                         </h2>
                                                         <h3 style={{ marginTop: "5px" }}>{lesson.topics}</h3>
                                                         <Button variant="contained" color="primary"
-                                                                className={classes.button}
-                                                                aria-label={`View Lesson ${lesson.id}`}
-                                                                aria-roledescription={`Navigate to lesson ${lesson.id}'s page to start working on problems`}
-                                                                role={"link"}
-                                                                style={{ marginBottom: "10px" }}
-                                                                onClick={() => {
-                                                                    this.props.history.push(`/lessons/${lesson.id}`)
-                                                                    this.props.selectLesson(lesson)
-                                                                }}>
+                                                            className={classes.button}
+                                                            aria-label={`View Lesson ${lesson.id}`}
+                                                            aria-roledescription={`Navigate to lesson ${lesson.id}'s page to start working on problems`}
+                                                            role={"link"}
+                                                            style={{ marginBottom: "10px" }}
+                                                            onClick={() => {
+                                                                this.props.history.push(`/lessons/${lesson.id}`)
+                                                                this.props.selectLesson(lesson)
+                                                            }}>
                                                             Select
                                                         </Button>
                                                     </Paper>
@@ -132,11 +137,11 @@ class LessonSelection extends React.Component {
                         {!this.isPrivileged && <Grid item xs={6} sm={6} md={2} key={2}>
                             {this.state.preparedRemoveProgress ?
                                 <Button className={classes.button} style={{ width: "100%" }} size="small"
-                                        onClick={this.removeProgress}
-                                        disabled={this.state.removedProgress}>{this.state.removedProgress ? "Progress Reset!" : "Are you sure?"}</Button> :
+                                    onClick={this.removeProgress}
+                                    disabled={this.state.removedProgress}>{this.state.removedProgress ? "Progress Reset!" : "Are you sure?"}</Button> :
                                 <Button className={classes.button} style={{ width: "100%" }} size="small"
-                                        onClick={this.prepareRemoveProgress}
-                                        disabled={this.state.preparedRemoveProgress}>{"Reset Progress"}</Button>}
+                                    onClick={this.prepareRemoveProgress}
+                                    disabled={this.state.preparedRemoveProgress}>{"Reset Progress"}</Button>}
                         </Grid>}
                         <Grid item xs={3} sm={3} md={4} key={3}/>
                     </Grid>
@@ -149,7 +154,7 @@ class LessonSelection extends React.Component {
                         </div>
                         <div style={{ display: "flex", flexGrow: 1, marginRight: 20, justifyContent: "flex-end" }}>
                             <IconButton aria-label="help" title={`How to use ${SITE_NAME}?`}
-                                        href={`${window.location.origin}${window.location.pathname}#/posts/how-to-use`}>
+                                href={`${window.location.origin}${window.location.pathname}#/posts/how-to-use`}>
                                 <HelpOutlineOutlinedIcon htmlColor={"#000"} style={{
                                     fontSize: 36,
                                     margin: -2
