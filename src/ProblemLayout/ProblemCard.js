@@ -11,15 +11,15 @@ import { checkAnswer } from '../ProblemLogic/checkAnswer.js';
 import styles from './commonStyles.js';
 import { withStyles } from '@material-ui/core/styles';
 import HintSystem from './HintSystem.js';
-import { renderText, chooseVariables } from '../ProblemLogic/renderText.js';
+import { chooseVariables, renderText } from '../ProblemLogic/renderText.js';
 import { ENABLE_BOTTOM_OUT_HINTS, ThemeContext } from '../config/config.js';
 
 import "./ProblemCard.css";
 import ProblemInput from "./ProblemInput/ProblemInput";
 import Spacer from "../Components/_General/Spacer";
-import { toast } from "react-toastify";
 import { stagingProp } from "../util/addStagingProperty";
 import ErrorBoundary from "../Components/_General/ErrorBoundary";
+import { toastNotifyCorrectness } from "./ToastNotifyCorrectness";
 
 
 class ProblemCard extends React.Component {
@@ -92,36 +92,41 @@ class ProblemCard extends React.Component {
 
     submit = () => {
         console.debug('submitting problem')
-        const [parsed, correctAnswer] = checkAnswer(this.state.inputVal, this.step.stepAnswer, this.step.answerType, this.step.precision, chooseVariables(Object.assign({}, this.props.problemVars, this.step.variabilization), this.props.seed));
+        const { inputVal, hintsFinished } = this.state;
+        const { variabilization, knowledgeComponents, precision, stepAnswer, answerType, stepBody, stepTitle } = this.step;
+        const { seed, problemVars, problemID, courseName, answerMade, lesson } = this.props;
+
+        const [parsed, correctAnswer, reason] = checkAnswer({
+            attempt: inputVal,
+            actual: stepAnswer,
+            answerType: answerType,
+            precision: precision,
+            variabilization: chooseVariables(Object.assign({}, problemVars, variabilization), seed),
+            questionText: stepBody.trim() || stepTitle.trim()
+        });
+
+        const isCorrect = !!correctAnswer
 
         this.context.firebase.log(
             parsed,
-            this.props.problemID,
+            problemID,
             this.step,
             null,
-            correctAnswer,
-            this.state.hintsFinished,
+            isCorrect,
+            hintsFinished,
             "answerStep",
-            chooseVariables(Object.assign({}, this.props.problemVars, this.step.variabilization), this.props.seed),
-            this.props.lesson,
-            this.props.courseName
-        );
+            chooseVariables(Object.assign({}, problemVars, variabilization), seed),
+            lesson,
+            courseName
+        )
 
-        if (correctAnswer) {
-            toast.success("Correct Answer!", {
-                autoClose: 3000
-            })
-        } else {
-            toast.error("Incorrect Answer!", {
-                autoClose: 3000
-            })
-        }
+        toastNotifyCorrectness(isCorrect, reason);
 
         this.setState({
-            isCorrect: correctAnswer,
-            checkMarkOpacity: correctAnswer === true ? '100' : '0'
+            isCorrect,
+            checkMarkOpacity: isCorrect ? '100' : '0'
         });
-        this.props.answerMade(this.index, this.step.knowledgeComponents, correctAnswer);
+        answerMade(this.index, knowledgeComponents, isCorrect);
     }
 
     editInput = (event) => {
@@ -148,36 +153,42 @@ class ProblemCard extends React.Component {
 
     unlockHint = (hintNum, hintType) => {
         // Mark question as wrong if hints are used (on the first time)
-        if (this.state.hintsFinished.reduce((a, b) => a + b) === 0 && this.state.isCorrect !== true) {
+        const { seed, problemVars, problemID, courseName, answerMade, lesson } = this.props;
+        const { isCorrect, hintsFinished } = this.state;
+        const { knowledgeComponents, variabilization } = this.step;
+
+        if (hintsFinished.reduce((a, b) => a + b) === 0 && isCorrect !== true) {
             this.setState({ usedHints: true });
-            this.props.answerMade(this.index, this.step.knowledgeComponents, false);
+            answerMade(this.index, knowledgeComponents, false);
         }
 
         // If the user has not opened a scaffold before, mark it as in-progress.
-        if (this.state.hintsFinished[hintNum] !== 1) {
+        if (hintsFinished[hintNum] !== 1) {
             this.setState(prevState => {
                 prevState.hintsFinished[hintNum] = (hintType !== "scaffold" ? 1 : 0.5);
                 return { hintsFinished: prevState.hintsFinished }
             }, () => {
-                this.context.firebase.log(
+                const { firebase } = this.context;
+
+                firebase.log(
                     null,
-                    this.props.problemID,
+                    problemID,
                     this.step,
                     this.hints[hintNum],
                     null,
-                    this.state.hintsFinished,
+                    hintsFinished,
                     "unlockHint",
-                    chooseVariables(Object.assign({}, this.props.problemVars, this.step.variabilization), this.props.seed),
-                    this.props.lesson,
-                    this.props.courseName
+                    chooseVariables(Object.assign({}, problemVars, variabilization), seed),
+                    lesson,
+                    courseName
                 );
             });
         }
 
     }
 
-    submitHint = (parsed, hint, correctAnswer, hintNum) => {
-        if (correctAnswer) {
+    submitHint = (parsed, hint, isCorrect, hintNum) => {
+        if (isCorrect) {
             this.setState(prevState => {
                 prevState.hintsFinished[hintNum] = 1;
                 return { hintsFinished: prevState.hintsFinished }
@@ -188,7 +199,7 @@ class ProblemCard extends React.Component {
             this.props.problemID,
             this.step,
             hint,
-            correctAnswer,
+            isCorrect,
             this.state.hintsFinished,
             chooseVariables(Object.assign({}, this.props.problemVars, this.step.variabilization), this.props.seed),
             this.props.lesson,
