@@ -1,0 +1,10 @@
+{
+    "id": "a19041ftrig1mod2vid1problem06",
+    "title": "Tangent and frequency",
+    "body": "The function $$f(x)=\\tan(x)$$ has vertical asymptotes where the input is $$\\frac{\\pm \\pi}{2}$$.",
+    "variabilization": {},
+    "oer": "https://OATutor.io",
+    "license": "CC4.0",
+    "lesson": "T1.2.1 Sinusoidal Functions",
+    "courseName": "Solid Foundations T: Trigonometry"
+}

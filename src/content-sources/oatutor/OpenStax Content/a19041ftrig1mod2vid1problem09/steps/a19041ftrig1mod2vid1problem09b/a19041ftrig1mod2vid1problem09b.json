@@ -1,0 +1,12 @@
+{
+    "id": "a19041ftrig1mod2vid1problem09b",
+    "stepAnswer": [
+        "$$-7$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "Identify the minimum value of the function $$V(t)=5\\sin(Bt)-2.$$",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$-7$$"
+}

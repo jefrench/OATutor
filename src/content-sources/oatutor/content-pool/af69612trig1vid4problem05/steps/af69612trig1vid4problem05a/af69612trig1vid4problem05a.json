@@ -1,0 +1,12 @@
+{
+    "id": "af69612trig1vid4problem05a",
+    "stepAnswer": [
+        "$$2$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "Find the minimum period of $$\\sin(\\pi$$ $$x)$$",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$2$$"
+}

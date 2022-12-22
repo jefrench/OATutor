@@ -1,0 +1,12 @@
+{
+    "id": "a2e9f9elawsofexpmodthreevideotwo02b",
+    "stepAnswer": [
+        "$$7$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "Evaluate the right hand side: $$\\sqrt{9}+\\sqrt{16}$$",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$7$$"
+}

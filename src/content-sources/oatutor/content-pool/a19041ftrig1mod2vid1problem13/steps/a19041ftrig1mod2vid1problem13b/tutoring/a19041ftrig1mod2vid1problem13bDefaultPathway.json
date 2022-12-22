@@ -1,0 +1,24 @@
+[
+    {
+        "id": "a19041ftrig1mod2vid1problem13b-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Amplitude definition",
+        "text": "The amplitude is the distance between the midline and the maximum value.",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a19041ftrig1mod2vid1problem13b-h2",
+        "type": "hint",
+        "dependencies": [
+            "a19041ftrig1mod2vid1problem13b-h1"
+        ],
+        "title": "Compute amplitude",
+        "text": "The ampliude is $$5-3=2$$. \\n We could also compute by looking at the maximum minus the minimum and dividing by 2: \\n (5-1))/2=4/2=2",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    }
+]

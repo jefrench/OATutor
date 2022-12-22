@@ -1,0 +1,24 @@
+[
+    {
+        "id": "a19041ftrig1mod2vid1problem10d-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Amplitude definition",
+        "text": "Amplitude is the distance from the midline",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a19041ftrig1mod2vid1problem10d-h2",
+        "type": "hint",
+        "dependencies": [
+            "a19041ftrig1mod2vid1problem10d-h1"
+        ],
+        "title": "Amplitude and vertical shift",
+        "text": "The amplitude is $$3$$, it is not changed by the vertical shift.",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    }
+]

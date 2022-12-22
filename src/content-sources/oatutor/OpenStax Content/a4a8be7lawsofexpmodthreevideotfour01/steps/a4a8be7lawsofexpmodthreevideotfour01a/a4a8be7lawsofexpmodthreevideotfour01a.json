@@ -1,0 +1,17 @@
+{
+    "id": "a4a8be7lawsofexpmodthreevideotfour01a",
+    "stepAnswer": [
+        "$$(-8)**{2/3}=(-8)**{2}\\cdot (-8)**{1/3}$$"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "Select the line of the computation that is incorrect.",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "choices": [
+        "$${\\left(-8\\right)}^2=64, $$ $$(-8)**{1/3}=-2$$",
+        "$$(-8)**{2/3}=(-8)**{2}\\cdot (-8)**{1/3}$$",
+        "$$64\\cdot$$ $$(-2)=-128$$",
+        "$$(-8)**{2/3}=(-8)**{2}\\cdot (-8)**{1/3}$$"
+    ]
+}

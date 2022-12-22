@@ -1,0 +1,64 @@
+[
+    {
+        "id": "a30757dtrig3mod4problem05a-h1",
+        "type": "scaffold",
+        "problemType": "TextBox",
+        "answerType": "arithmetic",
+        "hintAnswer": [
+            "$$\\frac{-\\sqrt{3}}{2}$$"
+        ],
+        "dependencies": [],
+        "title": "Evaluate the inner value",
+        "text": "First, calculate the inner value: what is $$\\sin(4\\pi/3)?$$",
+        "variabilization": {},
+        "oer": "",
+        "license": "",
+        "subHints": [
+            {
+                "id": "a30757dtrig3mod4problem05a-h1-s1",
+                "type": "hint",
+                "dependencies": [],
+                "title": "Identify the quadrant",
+                "text": "Observe that $$\\frac{\\pi}{3}=\\pi+\\frac{4\\pi}{3}$$ is in the third quadrant.",
+                "variabilization": {},
+                "oer": "",
+                "license": ""
+            }
+        ]
+    },
+    {
+        "id": "a30757dtrig3mod4problem05a-h2",
+        "type": "scaffold",
+        "problemType": "MultipleChoice",
+        "answerType": "string",
+        "hintAnswer": [
+            "$$\\frac{\\left(-\\pi\\right)}{3}$$"
+        ],
+        "dependencies": [
+            "a30757dtrig3mod4problem05a-h1"
+        ],
+        "title": "Evaluate the outer value",
+        "text": "$$\\sin(4\\pi/3)=-\\sqrt{3}/2.$$ Now, what is $$\\arcsin(-\\sqrt{3}/2)?$$",
+        "variabilization": {},
+        "oer": "",
+        "license": "",
+        "choices": [
+            "$$\\frac{4\\pi}{3}$$",
+            "$$\\frac{2\\pi}{3}$$",
+            "$$\\frac{\\left(-\\pi\\right)}{3}$$",
+            "$$\\frac{\\pi}{3}$$"
+        ]
+    },
+    {
+        "id": "a30757dtrig3mod4problem05a-h3",
+        "type": "hint",
+        "dependencies": [
+            "a30757dtrig3mod4problem05a-h2"
+        ],
+        "title": "Remember the range",
+        "text": "The output of $$\\arcsin$$ must be in the range $$[-\\pi/2,\\pi/2].$$ $$4\\pi/3$$ is outside this range, so the function output the angle in the allowed interval that maps to the same value.",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    }
+]

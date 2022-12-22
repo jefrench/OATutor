@@ -1,0 +1,17 @@
+{
+    "id": "aaccae9trig3mod2problem07a",
+    "stepAnswer": [
+        "undefined"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "Evaluate $$\\arcsin(1.000001).$$",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "choices": [
+        "$$\\frac{\\pi}{2}$$",
+        "$$\\frac{\\pi}{2}+1e-06$$",
+        "$$1.000001$$",
+        "undefined"
+    ]
+}

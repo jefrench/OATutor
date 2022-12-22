@@ -1,0 +1,12 @@
+{
+    "id": "a8c5fd6trig2vid6problem10b",
+    "stepAnswer": [
+        "$$\\frac{-1}{\\sqrt{2}}$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "\\sin((5pi)/4)",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$\\frac{-1}{\\sqrt{2}}$$"
+}

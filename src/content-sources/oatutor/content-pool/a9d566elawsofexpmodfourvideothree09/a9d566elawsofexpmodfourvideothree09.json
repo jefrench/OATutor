@@ -1,0 +1,10 @@
+{
+    "id": "a9d566elawsofexpmodfourvideothree09",
+    "title": "Expand the expression.",
+    "body": "Write in the format $$a\\log_3(x)+b\\log_3(y)+c\\log_3(z)$$ for some coeffiecients $$a$$, $$b$$, $$c.$$",
+    "variabilization": {},
+    "oer": "https://OATutor.io",
+    "license": "CC4.0",
+    "lesson": "A2.4.3 Logarithms of Powers",
+    "courseName": "Solid Foundations A: Algebra"
+}

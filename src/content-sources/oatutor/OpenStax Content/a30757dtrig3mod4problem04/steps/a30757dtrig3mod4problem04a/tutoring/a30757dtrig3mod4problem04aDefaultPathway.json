@@ -1,0 +1,59 @@
+[
+    {
+        "id": "a30757dtrig3mod4problem04a-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Understanding restricted domains",
+        "text": "The $$\\arctan$$ function only gives you the \"Principal Value\" (the one in the restricted domain). You have to use the function's periodicity to find other solutions.",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a30757dtrig3mod4problem04a-h2",
+        "type": "scaffold",
+        "problemType": "MultipleChoice",
+        "answerType": "string",
+        "hintAnswer": [
+            "pi"
+        ],
+        "dependencies": [
+            "a30757dtrig3mod4problem04a-h1"
+        ],
+        "title": "What is the period of $\\tan(x)$?",
+        "text": "",
+        "variabilization": {},
+        "oer": "",
+        "license": "",
+        "choices": [
+            "$$\\frac{\\pi}{2}$$",
+            "pi",
+            "$$2\\pi$$",
+            "undefined, it is not periodic"
+        ]
+    },
+    {
+        "id": "a30757dtrig3mod4problem04a-h3",
+        "type": "hint",
+        "dependencies": [
+            "a30757dtrig3mod4problem04a-h2"
+        ],
+        "title": "Interpretting the period",
+        "text": "If $$\\tan(\\theta)=y,$$ then $$\\tan(\\theta+n\\pi)=y$$ for any integer $$n.$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a30757dtrig3mod4problem04a-h4",
+        "type": "hint",
+        "dependencies": [
+            "a30757dtrig3mod4problem04a-h3"
+        ],
+        "title": "Shift the principal value into the desired interval",
+        "text": "Add the period pi to the principal value $$\\frac{\\pi}{4}$$. The result $$\\frac{5\\pi}{4}$$ falls within the required physical range of $$[\\pi, 2\\pi].$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    }
+]

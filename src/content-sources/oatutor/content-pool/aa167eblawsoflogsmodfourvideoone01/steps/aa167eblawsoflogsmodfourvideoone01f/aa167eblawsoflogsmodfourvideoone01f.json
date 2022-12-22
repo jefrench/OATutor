@@ -1,0 +1,18 @@
+{
+    "id": "aa167eblawsoflogsmodfourvideoone01f",
+    "stepAnswer": [
+        "Substitute step $$5$$ into step $$4$$"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "Step 6: $$\\log_b(mn)=a+c$$",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "answerLatex": "Substitute step $$5$$ into step $$4$$",
+    "choices": [
+        "Substitute step $$5$$ into step $$4$$",
+        "Substitute step $$5$$ into step $$3$$",
+        "Substitute step $$5$$ into step $$2$$",
+        "Substitute given into step $$5$$"
+    ]
+}

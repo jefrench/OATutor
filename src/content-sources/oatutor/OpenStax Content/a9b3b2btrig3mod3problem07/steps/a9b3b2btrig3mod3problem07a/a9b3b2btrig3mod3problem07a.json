@@ -1,0 +1,12 @@
+{
+    "id": "a9b3b2btrig3mod3problem07a",
+    "stepAnswer": [
+        "$$\\frac{\\left(-\\pi\\right)}{4}$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "Enter the exact value for $$\\arcsin(-\\sqrt{2}/2)$$",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$\\frac{\\left(-\\pi\\right)}{4}$$"
+}

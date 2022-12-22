@@ -1,0 +1,19 @@
+{
+    "id": "a6cf981trig2mod2problem07a",
+    "stepAnswer": [
+        "$$-\\cos(x)$$"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "Which of the following is equivalent to $$\\sin(x-\\pi)?$$",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "answerLatex": "$$-\\cos(x)$$",
+    "choices": [
+        "$$-\\cos(x)$$",
+        "$$-\\sin(x)$$",
+        "$$-\\cos(x)$$",
+        "$$\\cos(x)$$",
+        "$$\\sin(x)$$"
+    ]
+}

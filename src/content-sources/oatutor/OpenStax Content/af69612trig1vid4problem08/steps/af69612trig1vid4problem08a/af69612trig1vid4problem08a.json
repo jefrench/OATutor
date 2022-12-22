@@ -1,0 +1,16 @@
+{
+    "id": "af69612trig1vid4problem08a",
+    "stepAnswer": [
+        "increases"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "As $$w$$ decreases, the period of $$\\sin(wx)$$",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "choices": [
+        "increases",
+        "decreases",
+        "stays the same"
+    ]
+}

@@ -1,0 +1,46 @@
+[
+    {
+        "id": "a4a8be7lawsofexpmodthreevideothree04a-h1",
+        "type": "scaffold",
+        "problemType": "MultipleChoice",
+        "answerType": "string",
+        "hintAnswer": [
+            "$$\\frac{\\sqrt[3]{27}}{\\sqrt[3]{8}}$$"
+        ],
+        "dependencies": [],
+        "title": "Apply the law of exponents",
+        "text": "Which expression is equivalent to $$\\sqrt[3]{\\frac{27}{8}}$$ ?",
+        "variabilization": {},
+        "oer": "",
+        "license": "",
+        "choices": [
+            "$$\\frac{\\sqrt[3]{27}}{\\sqrt[3]{8}}$$",
+            "$$\\sqrt[3]{27}-\\sqrt[3]{8}$$",
+            "$$\\sqrt[3]{27-8}$$"
+        ]
+    },
+    {
+        "id": "a4a8be7lawsofexpmodthreevideothree04a-h2",
+        "type": "hint",
+        "dependencies": [
+            "a4a8be7lawsofexpmodthreevideothree04a-h1"
+        ],
+        "title": "Evaluate each radical",
+        "text": "$$\\frac{\\sqrt[3]{27}}{\\sqrt[3]{8}}=\\frac{3}{2}$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a4a8be7lawsofexpmodthreevideothree04a-h3",
+        "type": "hint",
+        "dependencies": [
+            "a4a8be7lawsofexpmodthreevideothree04a-h2"
+        ],
+        "title": "Worked solution",
+        "text": "$$\\sqrt[3]{\\frac{27}{8}}=\\frac{\\sqrt[3]{27}}{\\sqrt[3]{8}}=\\frac{3}{2}$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    }
+]

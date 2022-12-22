@@ -1,0 +1,41 @@
+[
+    {
+        "id": "aeba74clawsofexpmodtwovideotwo04a-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Apply the laws of exponents",
+        "text": "$$(a**{1/3})(a**{2/3})=a**{1/3+2/3}$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "aeba74clawsofexpmodtwovideotwo04a-h2",
+        "type": "scaffold",
+        "problemType": "TextBox",
+        "answerType": "arithmetic",
+        "hintAnswer": [
+            "$$1$$"
+        ],
+        "dependencies": [
+            "aeba74clawsofexpmodtwovideotwo04a-h1"
+        ],
+        "title": "Evaluate the power",
+        "text": "What is $$\\frac{1}{3}+\\frac{2}{3}$$?",
+        "variabilization": {},
+        "oer": "",
+        "license": "",
+        "subHints": [
+            {
+                "id": "aeba74clawsofexpmodtwovideotwo04a-h2-s1",
+                "type": "hint",
+                "dependencies": [],
+                "title": "Adding fractions",
+                "text": "$$\\frac{1}{3}+\\frac{2}{3}=\\frac{1+2}{3}=\\frac{3}{3}=1$$",
+                "variabilization": {},
+                "oer": "",
+                "license": ""
+            }
+        ]
+    }
+]

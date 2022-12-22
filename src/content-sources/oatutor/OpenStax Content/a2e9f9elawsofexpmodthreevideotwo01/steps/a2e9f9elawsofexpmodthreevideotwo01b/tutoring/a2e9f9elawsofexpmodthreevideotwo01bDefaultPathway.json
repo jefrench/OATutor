@@ -1,0 +1,66 @@
+[
+    {
+        "id": "a2e9f9elawsofexpmodthreevideotwo01b-h1",
+        "type": "scaffold",
+        "problemType": "MultipleChoice",
+        "answerType": "string",
+        "hintAnswer": [
+            "Exponents"
+        ],
+        "dependencies": [],
+        "title": "Order of operations",
+        "text": "Which operation comes in the expression $$2^2$$ + $$3^2$$ should be done first?",
+        "variabilization": {},
+        "oer": "",
+        "license": "",
+        "choices": [
+            "Parentheses",
+            "Exponents",
+            "Multiplication",
+            "Division",
+            "Addition",
+            "Subtraction"
+        ]
+    },
+    {
+        "id": "a2e9f9elawsofexpmodthreevideotwo01b-h2",
+        "type": "hint",
+        "dependencies": [
+            "a2e9f9elawsofexpmodthreevideotwo01b-h1"
+        ],
+        "title": "Order of operations",
+        "text": "$$2^2+3^2=4+9$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a2e9f9elawsofexpmodthreevideotwo01b-h3",
+        "type": "scaffold",
+        "problemType": "TextBox",
+        "answerType": "arithmetic",
+        "hintAnswer": [
+            "$$13$$"
+        ],
+        "dependencies": [
+            "a2e9f9elawsofexpmodthreevideotwo01b-h2"
+        ],
+        "title": "Evaluate",
+        "text": "Evaluate $$4+9$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a2e9f9elawsofexpmodthreevideotwo01b-h4",
+        "type": "hint",
+        "dependencies": [
+            "a2e9f9elawsofexpmodthreevideotwo01b-h3"
+        ],
+        "title": "Conclusion",
+        "text": "We saw that $$\\left(2+3\\right)^2=25$$ and $$2^2$$ + $$3^2=13$$. $$These$$ $$are$$ $$not$$ $$equal!$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    }
+]

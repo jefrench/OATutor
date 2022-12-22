@@ -1,0 +1,16 @@
+{
+    "id": "af69612trig1vid4problem09a",
+    "stepAnswer": [
+        "decreases"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "As $$w$$ increases, the period of $$\\tan(wx)$$",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "choices": [
+        "increases",
+        "decreases",
+        "stays the same"
+    ]
+}

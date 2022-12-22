@@ -1,0 +1,10 @@
+{
+    "id": "adb5110algexplogmodsix01",
+    "title": "Population growth",
+    "body": "The equation $$P(t)=100\\cdot$$ $$2^t$$ describes the population growth of a fungus, where $$t$$ is measured in days.",
+    "variabilization": {},
+    "oer": "https://OATutor.io",
+    "license": "CC4.0",
+    "lesson": "A2.5.3 Exponents and Logs in the Wild",
+    "courseName": "Solid Foundations A: Algebra"
+}

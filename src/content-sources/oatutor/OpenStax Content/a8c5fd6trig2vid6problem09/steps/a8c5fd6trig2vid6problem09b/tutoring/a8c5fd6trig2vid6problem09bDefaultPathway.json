@@ -1,0 +1,24 @@
+[
+    {
+        "id": "a8c5fd6trig2vid6problem09b-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Definition",
+        "text": "$$sin\\left(\\frac{\\pi}{4}\\right)$$ is the y-coordinate of the point on the circle that lies along the circumference corresponding to the angle measure $$\\frac{\\pi}{4}$$.\\n##figure4.gif##",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a8c5fd6trig2vid6problem09b-h3",
+        "type": "hint",
+        "dependencies": [
+            "a8c5fd6trig2vid6problem09a-h2"
+        ],
+        "title": "Coordinate",
+        "text": "The point on the unit circle with angle $$\\frac{\\pi}{4}$$ is in the first quadrant. Thus, the y-coordinate is positive and equal in absolute value to the absolute value of the x-coordinate; so it is $$\\frac{1}{\\sqrt{2}}$$.\\n##figure5.gif##",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    }
+]

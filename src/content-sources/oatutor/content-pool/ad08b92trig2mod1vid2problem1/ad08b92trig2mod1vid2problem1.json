@@ -1,0 +1,10 @@
+{
+    "id": "ad08b92trig2mod1vid2problem1",
+    "title": "Given the right triangle, find the value of the trig function of the given angle.",
+    "body": "A right triangle with a reference angle theta. The opposite leg has length $$3$$, the adjacent leg has length $$4$$, and the hypotenuse has length $$5$$.",
+    "variabilization": {},
+    "oer": "https://OATutor.io",
+    "license": 0.0,
+    "lesson": "T2.1.2 SOHCAHTOA Practice",
+    "courseName": "Solid Foundations T: Trigonometry"
+}

@@ -1,0 +1,17 @@
+{
+    "id": "aa167eblawsoflogsmodfourvideoone01g",
+    "stepAnswer": [
+        "Substitute given into step $$6$$"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "Step 7: $$\\log_b(mn)=\\log_b(m)+\\log_b(n)$$",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "answerLatex": "Substitute given into step $$6$$",
+    "choices": [
+        "Substitute given into step $$6$$",
+        "Substitute step $$1$$ into step $$6$$",
+        "Apply the law of logarithms for products"
+    ]
+}

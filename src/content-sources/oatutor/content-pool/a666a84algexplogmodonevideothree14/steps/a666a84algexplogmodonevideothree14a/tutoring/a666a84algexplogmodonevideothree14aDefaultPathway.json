@@ -1,0 +1,58 @@
+[
+    {
+        "id": "a666a84algexplogmodonevideothree14a-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Inverse properties",
+        "text": "Apply the cancellation property. Exponents undo logarithms with the same base: $$b**{\\log_b(x)}=x$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a666a84algexplogmodonevideothree14a-h2",
+        "type": "scaffold",
+        "problemType": "TextBox",
+        "answerType": "arithmetic",
+        "hintAnswer": [
+            "$$x+10$$"
+        ],
+        "dependencies": [
+            "a666a84algexplogmodonevideothree14a-h1"
+        ],
+        "title": "Inverse property.",
+        "text": "What is $$5**{\\log_{5}(x+10)}$$ ?",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a666a84algexplogmodonevideothree14a-h3",
+        "type": "hint",
+        "dependencies": [
+            "a666a84algexplogmodonevideothree14a-h2"
+        ],
+        "title": "Reduce the problem",
+        "text": "We've reduced the problem to solving $$x+10=11$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a666a84algexplogmodonevideothree14a-h4",
+        "type": "scaffold",
+        "problemType": "TextBox",
+        "answerType": "arithmetic",
+        "hintAnswer": [
+            "$$1$$"
+        ],
+        "dependencies": [
+            "a666a84algexplogmodonevideothree14a-h3"
+        ],
+        "title": "Solve",
+        "text": "Solve the new equation: $$x+10=11$$ for $$x$$.",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    }
+]

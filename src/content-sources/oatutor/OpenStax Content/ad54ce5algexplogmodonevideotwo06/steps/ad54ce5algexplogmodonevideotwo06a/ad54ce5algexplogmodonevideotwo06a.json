@@ -1,0 +1,15 @@
+{
+    "id": "ad54ce5algexplogmodonevideotwo06a",
+    "stepAnswer": [
+        "No"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "Does $$\\log_{1/2}\\left(-4\\right)$$ make sense?",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "choices": [
+        "Yes",
+        "No"
+    ]
+}

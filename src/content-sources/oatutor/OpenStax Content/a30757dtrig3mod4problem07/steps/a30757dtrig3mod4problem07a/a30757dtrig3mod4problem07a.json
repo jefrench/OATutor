@@ -1,0 +1,18 @@
+{
+    "id": "a30757dtrig3mod4problem07a",
+    "stepAnswer": [
+        "$$\\frac{\\left(-\\pi\\right)}{4}$$"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "Evaluate $$\\arctan(\\tan(3\\pi/4)).$$",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "answerLatex": "$$\\frac{\\left(-\\pi\\right)}{4}$$",
+    "choices": [
+        "$$\\frac{5\\pi}{4}$$",
+        "$$\\frac{\\pi}{4}$$",
+        "$$\\frac{\\left(-\\pi\\right)}{4}$$",
+        "$$\\frac{\\left(-5\\pi\\right)}{4}$$"
+    ]
+}

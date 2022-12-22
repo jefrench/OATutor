@@ -1,0 +1,60 @@
+[
+    {
+        "id": "af69612trig1vid4problem04a-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "The minimum period of $$\\cos(\\theta)$$",
+        "text": "The minimum period of $$\\cos(\\theta)$$ is $$2\\pi$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "af69612trig1vid4problem04a-h2",
+        "type": "hint",
+        "dependencies": [
+            "af69612trig1vid4problem04a-h1"
+        ],
+        "title": "Relate $$x$$ and $$\\theta$$",
+        "text": "To find the period of $$\\cos(2\\pi$$ $$x), $$ we need to find the range of values for $$x$$ that allows the input to span the same \"full circle\" as $$\\cos(\\theta)$$ does for 0< $$\\theta$$ <2pi.",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "af69612trig1vid4problem04a-h3",
+        "type": "hint",
+        "dependencies": [
+            "af69612trig1vid4problem04a-h2"
+        ],
+        "title": "Relate $$x$$ and $$\\theta$$",
+        "text": "Set $$2pix=$$ $$\\theta$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "af69612trig1vid4problem04a-h4",
+        "type": "hint",
+        "dependencies": [
+            "af69612trig1vid4problem04a-h3"
+        ],
+        "title": "Substitute",
+        "text": "Substitute $$\\theta$$ with $$2pix$$ in the standard period interval ( $$0<\\theta<2\\pi$$ ): \\n $$0<2pix<2\\pi$$.",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "af69612trig1vid4problem04a-h5",
+        "type": "hint",
+        "dependencies": [
+            "af69612trig1vid4problem04a-h4"
+        ],
+        "title": "Solve for the interval of $$x$$",
+        "text": "Dividing the entire inequality $$0<2pix<2\\pi$$ by $$2\\pi$$, we get $$0<x<1$$. Thus, the period is $$1-0=1$$.",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    }
+]

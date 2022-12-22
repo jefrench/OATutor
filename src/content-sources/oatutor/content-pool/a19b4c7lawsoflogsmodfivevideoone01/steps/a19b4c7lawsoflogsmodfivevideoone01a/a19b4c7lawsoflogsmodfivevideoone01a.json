@@ -1,0 +1,12 @@
+{
+    "id": "a19b4c7lawsoflogsmodfivevideoone01a",
+    "stepAnswer": [
+        "$$\\left(x+1\\right)^5$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "$$5\\log_2(x+1)-2\\log_2(x-2).$$ Find $$P(x).$$",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$\\left(x+1\\right)^5$$"
+}

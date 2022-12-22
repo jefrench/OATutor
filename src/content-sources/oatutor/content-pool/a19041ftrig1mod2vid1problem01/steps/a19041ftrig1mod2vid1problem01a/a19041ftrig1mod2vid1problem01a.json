@@ -1,0 +1,17 @@
+{
+    "id": "a19041ftrig1mod2vid1problem01a",
+    "stepAnswer": [
+        "$$\\sin(Bx)$$"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "The first peak of $$\\sin(Ax)$$ occurs at $$x=\\frac{\\pi}{2}$$. The first peak of $$\\sin(Bx)$$ occurs at $$x=1$$. Which graph represents a function with a higher frequency?",
+    "stepBody": "##figure1.gif## ",
+    "answerType": "string",
+    "variabilization": {},
+    "answerLatex": "$$\\sin(Bx)$$",
+    "choices": [
+        "$$\\sin(Ax)$$",
+        "$$\\sin(Bx)$$",
+        "They have the same frequency."
+    ]
+}

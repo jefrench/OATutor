@@ -1,0 +1,12 @@
+{
+    "id": "a2c5dc0trig1vid2problem02b",
+    "stepAnswer": [
+        "$$-1$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "$$\\operatorname{sinnegneg}\\left(\\frac{\\pi}{2}\\right)$$",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$-1$$"
+}

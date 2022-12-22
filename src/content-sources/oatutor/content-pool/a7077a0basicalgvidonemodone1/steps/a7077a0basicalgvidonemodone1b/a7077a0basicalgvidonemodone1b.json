@@ -1,0 +1,15 @@
+{
+    "id": "a7077a0basicalgvidonemodone1b",
+    "stepAnswer": [
+        "General"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "$$3a+1=a^3$$",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "choices": [
+        "General",
+        "Specific"
+    ]
+}

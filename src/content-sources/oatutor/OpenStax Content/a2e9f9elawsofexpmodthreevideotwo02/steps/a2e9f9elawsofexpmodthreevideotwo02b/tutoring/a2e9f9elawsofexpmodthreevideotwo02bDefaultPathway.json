@@ -1,0 +1,41 @@
+[
+    {
+        "id": "a2e9f9elawsofexpmodthreevideotwo02b-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Order of operations",
+        "text": "First apply the radicals, as those are equivalent to exponents.",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a2e9f9elawsofexpmodthreevideotwo02b-h2",
+        "type": "hint",
+        "dependencies": [
+            "a2e9f9elawsofexpmodthreevideotwo02b-h1"
+        ],
+        "title": "Order of operations",
+        "text": "$$\\sqrt{9}+\\sqrt{16}=3+4$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a2e9f9elawsofexpmodthreevideotwo02b-h3",
+        "type": "scaffold",
+        "problemType": "TextBox",
+        "answerType": "arithmetic",
+        "hintAnswer": [
+            "$$7$$"
+        ],
+        "dependencies": [
+            "a2e9f9elawsofexpmodthreevideotwo02b-h2"
+        ],
+        "title": "Evaluate",
+        "text": "What is $$3+4$$?",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    }
+]

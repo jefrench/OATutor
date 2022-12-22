@@ -1,0 +1,17 @@
+{
+    "id": "a4a8be7lawsofexpmodthreevideotfour04a",
+    "stepAnswer": [
+        "$$\\left(\\frac{16}{-2}\\right)**{2/3}=\\frac{16**2}{(-2)**3}$$"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "Select the line of the computation that is incorrect.",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "choices": [
+        "$$(-8)**{2/3}=\\left(\\frac{16}{-2}\\right)**{2/3}$$",
+        "$$\\left(\\frac{16}{-2}\\right)**{2/3}=\\frac{16**2}{(-2)**3}$$",
+        "$$\\frac{16**2}{(-2)**3}=\\frac{16**2}{-8}$$",
+        "$$\\frac{16**2}{-8}=-32$$"
+    ]
+}

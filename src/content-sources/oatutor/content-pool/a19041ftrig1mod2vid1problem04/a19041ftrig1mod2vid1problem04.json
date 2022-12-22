@@ -1,0 +1,10 @@
+{
+    "id": "a19041ftrig1mod2vid1problem04",
+    "title": "Phase shift and initial position",
+    "body": "An engineer is modeling a piston's displacement using $$y=\\cos(2x-\\frac{\\pi}{2}).$$",
+    "variabilization": {},
+    "oer": "https://OATutor.io",
+    "license": "CC4.0",
+    "lesson": "T1.2.1 Sinusoidal Functions",
+    "courseName": "Solid Foundations T: Trigonometry"
+}

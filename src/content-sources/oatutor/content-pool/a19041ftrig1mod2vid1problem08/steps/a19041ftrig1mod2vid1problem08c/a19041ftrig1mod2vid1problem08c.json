@@ -1,0 +1,12 @@
+{
+    "id": "a19041ftrig1mod2vid1problem08c",
+    "stepAnswer": [
+        "$$10$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "What is the peak-to-peak voltage?",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$10$$"
+}

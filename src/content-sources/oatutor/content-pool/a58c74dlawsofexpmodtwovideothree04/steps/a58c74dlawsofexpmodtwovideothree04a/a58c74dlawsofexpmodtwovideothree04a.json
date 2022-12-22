@@ -1,0 +1,17 @@
+{
+    "id": "a58c74dlawsofexpmodtwovideothree04a",
+    "stepAnswer": [
+        "$$\\sqrt{-25}$$"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "Select the radical that is undefined.",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "answerLatex": "$$\\sqrt{-25}$$",
+    "choices": [
+        "$$\\sqrt[4]{16}$$",
+        "$$\\sqrt[3]{-27}$$",
+        "$$\\sqrt{-25}$$"
+    ]
+}

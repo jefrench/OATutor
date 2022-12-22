@@ -1,0 +1,48 @@
+[
+    {
+        "id": "a5b3f97trig1vid1problem02a-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Circumference",
+        "text": "The circumference of a unit circle is $$2\\pi$$.",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a5b3f97trig1vid1problem02a-h2",
+        "type": "hint",
+        "dependencies": [
+            "a5b3f97trig1vid1problem02a-h1"
+        ],
+        "title": "Fraction of the circumference",
+        "text": "If $$\\theta=-3\\pi/4$$ then the total circumference of the circle travelled is $$\\frac{\\frac{3\\pi}{4}}{2\\pi}$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a5b3f97trig1vid1problem02a-h3",
+        "type": "hint",
+        "dependencies": [
+            "a5b3f97trig1vid1problem02a-h2"
+        ],
+        "title": "Fraction division",
+        "text": "$$\\frac{\\frac{3\\pi}{4}}{2\\pi}=\\frac{3}{8}$$",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "a5b3f97trig1vid1problem02a-h4",
+        "type": "hint",
+        "dependencies": [
+            "a5b3f97trig1vid1problem02a-h3"
+        ],
+        "title": "Identify the point",
+        "text": "The angle $$\\theta$$ is $$\\frac{3}{8} th$$ of the circumference of the circle, moving in the clockwise direction. That corresponds to point C.",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    }
+]

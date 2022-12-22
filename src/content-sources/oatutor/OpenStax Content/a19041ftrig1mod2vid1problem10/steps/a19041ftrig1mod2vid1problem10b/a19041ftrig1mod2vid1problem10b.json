@@ -1,0 +1,12 @@
+{
+    "id": "a19041ftrig1mod2vid1problem10b",
+    "stepAnswer": [
+        "$$1$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "Identify the minimum value of the function $$V(t)=3\\sin(Bt)+4.$$",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$1$$"
+}

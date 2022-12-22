@@ -1,0 +1,12 @@
+{
+    "id": "acad659radicalnotationmodtwovideoone08a",
+    "stepAnswer": [
+        "$$a^{\\frac{1}{3}}$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "$$\\sqrt[3]{a}$$",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$a^{\\frac{1}{3}}$$"
+}
