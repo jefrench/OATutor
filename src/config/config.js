@@ -6,9 +6,15 @@ import { SITE_NAME } from "./shared-config"
 import { cleanObjectKeys } from "../util/cleanObject";
 
 const ThemeContext = React.createContext(0);
-const SITE_VERSION = "1.3.4";
+const SITE_VERSION = "1.4.0";
 
 const CURRENT_SEMESTER = calculateSemester(Date.now())
+
+/**
+ * If user does not access the website through Canvas, show a warning (for the first time).
+ * @type {boolean}
+ */
+const SHOW_NOT_CANVAS_WARNING = false;
 
 /**
  * Indicates whether the copyright disclaimer should be shown in the footer of the website.
@@ -29,6 +35,13 @@ const ENABLE_FIREBASE = true;
  * @type {boolean}
  */
 const DO_LOG_DATA = true;
+
+/**
+ * Indicates whether a log event should be fired everytime a user leaves or returns to this window.
+ * @type {boolean}
+ */
+const DO_FOCUS_TRACKING = true;
+
 /**
  * If DO_LOG_DATA is enabled, indicates whether the site should also track user mouse interactions with the site. See
  * the README.md to properly enable this feature.
@@ -37,7 +50,7 @@ const DO_LOG_DATA = true;
 const DO_LOG_MOUSE_DATA = false;
 
 /**
- * TODO: document the usage of this boolean option
+ * If reach bottom of provided hints, give correct answer to question
  * @type {boolean}
  */
 const ENABLE_BOTTOM_OUT_HINTS = true;
@@ -106,5 +119,7 @@ export {
     SHOW_COPYRIGHT,
     CURRENT_SEMESTER,
     CANVAS_WARNING_STORAGE_KEY,
-    findLessonById
+    DO_FOCUS_TRACKING,
+    findLessonById,
+    SHOW_NOT_CANVAS_WARNING,
 };
