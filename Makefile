@@ -1,7 +1,6 @@
 # ===============================================
 # OATutor Build System
 # ===============================================
-
 DATE := $(shell date +"%Y-%m-%d_%H-%M-%S")
 REPO_PATH := /Users/jenniferkamrin/Documents/git/OATutor
 CONTENT_PATH := $(REPO_PATH)/src/content-sources/oatutor/Content
@@ -22,15 +21,24 @@ SHEETS := "1.1 Definitions of Exp and Log" "1.2 Domains and Constraints" "1.3 Lo
 all: book
 
 # -----------------------------------------------
-# 1️⃣ Local build (Excel-based)
+# 1️⃣ Local build (Excel-based) DON'T USE ANYMORE
 # -----------------------------------------------
 local:
 	@echo "🚀 Starting OATutor LOCAL build..."
 	cd $(CONTENT_PATH) && python3 $(TOOL_SCRIPT) local "$(BANK_URL)"
 	$(MAKE) move
 
+
 # -----------------------------------------------
-# 2️⃣ Google Sheet build (multi-sheet)
+# 3️⃣ Local test (runs npm start) DON't USe ANYMORe
+# -----------------------------------------------
+start:
+	@echo "🧪 Starting local OATutor test site..."
+	cd $(REPO_PATH) && npm install
+	cd $(REPO_PATH) && npm start
+
+# -----------------------------------------------
+# 2️⃣ Google Sheet build (multi-sheet) TESTING PURPOSES/DON"T USE
 # -----------------------------------------------
 sheet:
 	@echo "🚀 Starting OATutor SHEET build..."
@@ -40,12 +48,23 @@ sheet:
 	done
 
 # -----------------------------------------------
-# 2️⃣ Google Sheet build (book)
+# 1️⃣ Google Sheet build (book)
 # -----------------------------------------------
+# Automatically detects if a 'full' build is needed based on the content-pool
+#	@echo "🚀 Starting OATutor BOOK build..."
+#	cd $(CONTENT_PATH) && python3 $(TOOL_SCRIPT) online "$(URL_SHEET)"
+#	$(MAKE) move
 book:
-	@echo "🚀 Starting OATutor BOOK build..."
-	cd $(CONTENT_PATH) && python3 $(TOOL_SCRIPT) online "$(URL_SHEET)"
+	@echo "🚀 Checking content status..."
+	@if [ ! -d "$(REPO_PATH)/src/content-sources/oatutor/content-pool" ] || [ -z "$$(ls -A $(REPO_PATH)/src/content-sources/oatutor/content-pool 2>/dev/null)" ]; then \
+		echo "📢 No content found in content-pool. Running FULL build..."; \
+		cd $(CONTENT_PATH) && python3 $(TOOL_SCRIPT) online "$(URL_SHEET)" full; \
+	else \
+		echo "📢 Content detected. Running INCREMENTAL build..."; \
+		cd $(CONTENT_PATH) && python3 $(TOOL_SCRIPT) online "$(URL_SHEET)"; \
+	fi
 	$(MAKE) move
+
 
 # -----------------------------------------------
 # Move and prep content after build
@@ -58,25 +77,48 @@ move:
 	cd $(REPO_PATH)/src/content-sources/oatutor && cp bkt-params/defaultBKTParams.json bkt-params/experimentalBKTParams.json
 	@echo "✅ Content moved successfully."
 
+
+
 # -----------------------------------------------
-# 3️⃣ Local test (runs npm start)
+# 2️⃣ Google Sheet build (fullbook)
 # -----------------------------------------------
-start:
-	@echo "🧪 Starting local OATutor test site..."
-	cd $(REPO_PATH) && npm install
-	cd $(REPO_PATH) && npm start
+# Automatically does a 'full' build
+fullbook:
+	@echo "🚀 Starting OATutor BOOK build..."
+	cd $(CONTENT_PATH) && python3 $(TOOL_SCRIPT) online "$(URL_SHEET)" full
+	$(MAKE) move
+
+
+
+# -----------------------------------------------
+# 3️⃣ Deploy to production (Safe branch switching)
+# -----------------------------------------------
+deploy:
+	@echo "🚀 Preparing deployment..."
+	@# Switch to gh-pages if it exists, otherwise create it
+	git checkout gh-pages || git checkout -b gh-pages
+	@echo "📦 Installing and Building..."
+	npm install
+	npm run build
+	@echo "📤 Committing and Pushing..."
+	git add docs/*
+	git commit -m "Deploy build on $(DATE)"
+	git push origin gh-pages --force
+	@echo "🔙 Returning to main branch..."
+	git checkout main
 
 # -----------------------------------------------
 # 4️⃣ Deploy to production (runs npm run deploy)
 # -----------------------------------------------
-deploy:
+deployold:
 	@echo "🚀 Deploying OATutor to gh-pages..."
 	cd $(REPO_PATH) && git checkout -b gh-pages
 	cd $(REPO_PATH) && npm install
 	cd $(REPO_PATH) && npm run build
 	cd $(REPO_PATH) && git add docs/*
 	cd $(REPO_PATH) && git commit -m "Deploy build on $(DATE)"
-	cd $(REPO_PATH) && git push origin gh-pages --force
+	cd $(REPO_PATH) && git push --set-upstream origin gh-pages
+	cd $(REPO_PATH) && git push origin gh-pages --force git 
 	
 
 # -----------------------------------------------
@@ -90,6 +132,7 @@ clean:
 	@echo "💀 Node processes stopped and environment cleaned."
 	git checkout main
 	git branch -D gh-pages || true
+
 
 
 
