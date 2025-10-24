@@ -9,6 +9,8 @@
 /coverage
 
 # production
+/build
+/docs
 
 # misc
 .DS_Store
@@ -35,3 +37,4 @@ oatutor-firebase-adminsdk.json
 pnpm-lock.yaml
 
 /generated
+/docs
