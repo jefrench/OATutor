@@ -43,8 +43,8 @@ sheet:
 # -----------------------------------------------
 book:
 	@echo "🚀 Starting OATutor BOOK build..."
-	cd $(CONTENT_PATH) && python3 $(TOOL_SCRIPT) online "$(URL_SHEET)" "$(SHEETS)"
-	done
+	cd $(CONTENT_PATH) && python3 $(TOOL_SCRIPT) online "$(URL_SHEET)"
+	$(MAKE) move
 
 # -----------------------------------------------
 # Move and prep content after build
