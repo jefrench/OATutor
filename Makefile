@@ -1,6 +1,7 @@
 # ===============================================
 # OATutor Build System
 # ===============================================
+
 DATE := $(shell date +"%Y-%m-%d_%H-%M-%S")
 REPO_PATH := /Users/jenniferkamrin/Documents/git/OATutor
 CONTENT_PATH := $(REPO_PATH)/src/content-sources/oatutor/Content
@@ -78,7 +79,6 @@ move:
 	@echo "✅ Content moved successfully."
 
 
-
 # -----------------------------------------------
 # 2️⃣ Google Sheet build (fullbook)
 # -----------------------------------------------
@@ -118,7 +118,6 @@ deployold:
 	cd $(REPO_PATH) && git add docs/*
 	cd $(REPO_PATH) && git commit -m "Deploy build on $(DATE)"
 	cd $(REPO_PATH) && git push --set-upstream origin gh-pages
-	cd $(REPO_PATH) && git push origin gh-pages --force git 
 	
 
 # -----------------------------------------------
@@ -132,8 +131,4 @@ clean:
 	@echo "💀 Node processes stopped and environment cleaned."
 	git checkout main
 	git branch -D gh-pages || true
-
-
-
-
 
