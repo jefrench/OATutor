@@ -2,6 +2,7 @@
 # OATutor Build System
 # ===============================================
 
+DATE := $(shell date +"%Y-%m-%d_%H-%M-%S")
 REPO_PATH := /Users/jenniferkamrin/Documents/git/OATutor
 CONTENT_PATH := $(REPO_PATH)/src/content-sources/oatutor/Content
 BANK_URL := $(CONTENT_PATH)/Content-Files/Problem Bank URL.xlsx
@@ -13,12 +14,12 @@ URL_SHEET := 1H4hLDt8UDeuaMb-YkHTtieDxbJVKUjXqYAIUJi-EDGE
 # Define course names for multi-sheet builds
 SHEETS := "1.1 Definitions of Exp and Log" "1.2 Domains and Constraints" "1.3 Log and Exp are Inverses"
 
-.PHONY: all local sheet book move preprocess start deploy clean kill
+.PHONY: all local sheet book move start deploy clean
 
 # -----------------------------------------------
 # Default target
 # -----------------------------------------------
-all: local
+all: book
 
 # -----------------------------------------------
 # 1️⃣ Local build (Excel-based)
@@ -58,13 +59,6 @@ move:
 	@echo "✅ Content moved successfully."
 
 # -----------------------------------------------
-# Optional preprocess (skip if not needed)
-# -----------------------------------------------
-preprocess:
-	@echo "🧠 Running preprocessProblemPool..."
-	cd $(REPO_PATH)/src/tools && node preprocessProblemPool.js || echo "⚠️ Preprocess failed or not needed"
-
-# -----------------------------------------------
 # 3️⃣ Local test (runs npm start)
 # -----------------------------------------------
 start:
@@ -76,18 +70,27 @@ start:
 # 4️⃣ Deploy to production (runs npm run deploy)
 # -----------------------------------------------
 deploy:
-	@echo "🚀 Deploying OATutor to production..."
+	@echo "🚀 Deploying OATutor to gh-pages..."
+	cd $(REPO_PATH) && git checkout -b gh-pages
 	cd $(REPO_PATH) && npm install
-	cd $(REPO_PATH) && npm run deploy
+	cd $(REPO_PATH) && npm run build
+	cd $(REPO_PATH) && git add docs/*
+	cd $(REPO_PATH) && git commit -m "Deploy build on $(DATE)"
+	cd $(REPO_PATH) && git push --set-upstream origin gh-pages
+	
 
 # -----------------------------------------------
-# Cleanup utilities
+# Clean old build artifacts and gh-pages branch
 # -----------------------------------------------
-kill:
-	@echo "☠️ Killing OATutor build process..."
+clean:
+	@echo "🧹 Cleaning project..."
 	@pkill -f node || echo "⚠️ No Node processes found"
 	@rm -rf $(REPO_PATH)/node_modules
 	@npm cache clean --force
 	@echo "💀 Node processes stopped and environment cleaned."
+	git checkout main
+	git branch -D gh-pages || true
+
+
 
 
