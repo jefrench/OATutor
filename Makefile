@@ -53,7 +53,7 @@ book:
 move:
 	@echo "📦 Moving and preparing content files..."
 	cd $(REPO_PATH)/src/content-sources/oatutor && mkdir -p content-pool bkt-params
-	rsync -av --update "$(CONTENT_PATH)/OpenStax Content/" "$(REPO_PATH)/src/content-sources/oatutor/content-pool/" || echo "⚠️ No files to move"
+	rsync -av --update "$(REPO_PATH)/src/content-sources/oatutor/OpenStax Content/" "$(REPO_PATH)/src/content-sources/oatutor/content-pool/" || echo "⚠️ No files to move"
 	cd $(REPO_PATH)/src/content-sources/oatutor && mv bktParams.json bkt-params/defaultBKTParams.json || echo "⚠️ bktParams.json missing"
 	cd $(REPO_PATH)/src/content-sources/oatutor && cp bkt-params/defaultBKTParams.json bkt-params/experimentalBKTParams.json
 	@echo "✅ Content moved successfully."
@@ -76,7 +76,7 @@ deploy:
 	cd $(REPO_PATH) && npm run build
 	cd $(REPO_PATH) && git add docs/*
 	cd $(REPO_PATH) && git commit -m "Deploy build on $(DATE)"
-	cd $(REPO_PATH) && git push --set-upstream origin gh-pages
+	cd $(REPO_PATH) && git push origin gh-pages --force
 	
 
 # -----------------------------------------------
