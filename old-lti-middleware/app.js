@@ -33,8 +33,8 @@ const consumerKeySecretMap = {
     'key': 'secret',
 }
 
-const oatsHost = "https://cahlr.github.io/OATutor/#"
-const stagingHost = "https://cahlr.github.io/OATutor-Staging/#"
+const oatsHost = "https://jefrench.github.io/OATutor/#"
+const stagingHost = "https://jefrench.github.io/OATutor-Staging/#"
 const unlinkedPage = "assignment-not-linked"
 const alreadyLinkedPage = "assignment-already-linked"
 const jwtAlgorithm = "HS256"
