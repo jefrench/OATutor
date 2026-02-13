@@ -11,6 +11,7 @@
 # production
 /build
 /docs
+/src/content-sources/
 
 # misc
 .DS_Store
