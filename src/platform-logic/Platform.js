@@ -121,6 +121,19 @@ class Platform extends React.Component {
             this.context.problemID = "n/a";
         }
     }
+
+    getProgressBarData() {
+        if (!this.lesson) return { completed: 0, total: 0, percent: 0 };
+
+        const lessonName = String(this.lesson.name.replace("Lesson ", "") + " " + this.lesson.topics);
+        const problems = this.problemIndex.problems.filter(
+            ({ lesson }) => String(lesson).includes(lessonName)
+        );
+        const completed = this.completedProbs.size;
+        const total = problems.length;
+        const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+        return { completed, total, percent };
+    }
     
     async selectLesson(lesson, updateServer=true) {
         const context = this.context;
